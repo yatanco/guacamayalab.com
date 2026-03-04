@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "La importancia de preguntarte qué es lo que quieres"
 date: 2026-02-26
 lang: es

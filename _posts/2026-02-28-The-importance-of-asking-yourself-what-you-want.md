@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "The Importance of Asking Yourself What You Want"
 date: 2026-02-26
 lang: en
