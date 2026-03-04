@@ -3,32 +3,31 @@
 
 @import "{{ site.theme }}";
 
-/* One-column reading layout for jekyll-theme-minimal */
-header, section, footer {
-  float: none !important;
-  width: auto !important;
-  position: static !important;
-}
-
-body {
-  padding: 0 1rem;
-}
-
-/* Optimal reading width (roughly 60–75 chars/line) */
+/* Keep everything centered and readable */
 .wrapper {
-  max-width: 740px !important;
-  width: 100% !important;
-  margin: 2.5rem auto !important;
+  max-width: 740px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  width: 100%;
 }
 
-/* Remove the visual “split page” feel */
-section {
-  border: 0 !important;
-  padding: 0 !important;
-}
-
-/* Gentle readability bump */
+/* Typography: simple + readable */
 body, p, li {
   font-size: 18px;
   line-height: 1.65;
+}
+
+/* Minimal theme uses a sidebar-ish header on wider screens.
+   This makes it behave like a single-column essay layout. */
+@media screen and (min-width: 64em) {
+  header {
+    float: none;
+    width: auto;
+  }
+  section {
+    float: none;
+    width: auto;
+    border: 0;
+    padding: 0;
+  }
 }
