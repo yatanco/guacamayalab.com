@@ -1,0 +1,34 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* One-column reading layout for jekyll-theme-minimal */
+header, section, footer {
+  float: none !important;
+  width: auto !important;
+  position: static !important;
+}
+
+body {
+  padding: 0 1rem;
+}
+
+/* Optimal reading width (roughly 60–75 chars/line) */
+.wrapper {
+  max-width: 740px !important;
+  width: 100% !important;
+  margin: 2.5rem auto !important;
+}
+
+/* Remove the visual “split page” feel */
+section {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+/* Gentle readability bump */
+body, p, li {
+  font-size: 18px;
+  line-height: 1.65;
+}

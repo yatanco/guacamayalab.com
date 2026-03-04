@@ -3,8 +3,6 @@ layout: default
 title: Guacamaya Lab
 ---
 
-An online notebook — unfinished, evolving, honest.
-
 ## Posts
 
 {% for post in site.posts %}
