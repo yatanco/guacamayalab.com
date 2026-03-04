@@ -12,5 +12,6 @@ plugins:
 sass:
   style: compressed
 
-  github:
+show_downloads: false
+github:
   is_project_page: false
