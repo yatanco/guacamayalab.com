@@ -2,6 +2,8 @@ title: Guacamaya Lab
 description: An online notebook — unfinished, evolving, honest.
 theme: jekyll-theme-minimal
 
+author: Yatan
+
 permalink: /:year/:month/:day/:title/
 
 markdown: kramdown
@@ -13,5 +15,6 @@ sass:
   style: compressed
 
 show_downloads: false
+
 github:
   is_project_page: false
