@@ -79,4 +79,4 @@ If any of this resonates with you, I encourage you to try it.
 
 You can learn more from Kristin Neff here:
 
-https://self-compassion.org/exercises/exercise-6-self-compassion-journal/
+[Kristin Neff's Self-Compassion Journalling](https://self-compassion.org/exercises/exercise-6-self-compassion-journal/)
