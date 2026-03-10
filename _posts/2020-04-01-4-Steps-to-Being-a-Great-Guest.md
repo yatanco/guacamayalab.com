@@ -67,6 +67,8 @@ Creating value for your host makes you an especially welcome guest.
 
 Of course this is not an exhaustive list, and different cultures value different things.
 
-But in my experience, you rarely go wrong following these principles.
+But at the core, being a good guest is simple: remember that someone is sharing their space, their routines, and a small part of their life with you.
 
-May it be useful—and may it help you become a guest who leaves people happy to host you again.
+A little extra awareness, gratitude, and care go a long way.
+
+In my experience, people rarely forget a guest who made their home feel respected.
