@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## Latest Writing
+## Latest Notes
 
 {% for post in site.posts %}
 ### [{{ post.title }}]({{ post.url }})
