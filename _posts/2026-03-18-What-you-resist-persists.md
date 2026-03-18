@@ -34,8 +34,8 @@ Eventually I have to step in anyway, as it’s my responsibility — becoming ex
 
 ## What I take from this
 
-If you try not to be needy, you might become distant.
-If you avoid expressing your needs, you might disconnect.
-If you avoid being "bossy", you can fail in your leadership.
+* If you try not to be needy, you might become distant.
+* If you avoid expressing your needs, you might disconnect.
+* If you avoid being "bossy", you can fail in your leadership.
 
-Most of the time, the thing you’re avoiding is exactly what needs to be said or done. And often, others are relieved when someone finally says it.
+Most of the time, the thing you’re avoiding is exactly what needs to be said or done. And more often than not, others are relieved when someone finally says/does it.
