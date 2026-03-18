@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What You Resist, Persists - Avoiding Discomfort Makes It Worse"
-date: 2026-10-18
+date: 2026-03-18
 lang: en
 ---
 > a sentence that gives me wisdom in different situations
