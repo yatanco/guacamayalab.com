@@ -3,65 +3,141 @@
 
 @import "{{ site.theme }}";
 
-/* One-column reading layout for jekyll-theme-minimal */
-header,
-section,
-footer {
+/* ── Layout ─────────────────────────────────────── */
+header, section, footer {
   float: none;
   width: auto;
   position: static;
 }
 
-/* Center the title block */
-header {
-  text-align: center;
-}
-
-body {
-  padding: 0 1rem;
-}
-
-/* Optimal reading width */
 .wrapper {
-  max-width: 740px;
+  max-width: 680px;
   width: 100%;
-  margin: 2.5rem auto;
+  margin: 3rem auto;
+  padding: 0 1.25rem;
 }
 
-/* Remove split-page feel */
 section {
   border: 0;
   padding: 0;
 }
 
-/* Readability */
-body,
-p,
-li {
+/* ── Typography ──────────────────────────────────── */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 18px;
-  line-height: 1.65;
+  line-height: 1.7;
+  padding: 0;
 }
 
-h1 {
-  opacity: 1;
+p, li {
+  font-size: 18px;
+  line-height: 1.7;
 }
 
-h2 {
-  opacity: 0.85;
+h1 { font-size: 1.6rem; font-weight: 400; letter-spacing: 0.3px; }
+h2 { font-size: 1.25rem; font-weight: 400; opacity: 0.88; }
+h3 { font-size: 1.1rem; font-weight: 400; }
+
+/* ── Header ──────────────────────────────────────── */
+header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-/* Dark mode */
+header nav {
+  margin-top: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+header nav a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 0.75rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+header nav a:hover {
+  color: #111;
+  border-bottom-color: #aaa;
+}
+
+/* ── Post list ───────────────────────────────────── */
+ul.posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.posts li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 18px;
+}
+
+ul.posts li:first-child { padding-top: 0; }
+
+ul.posts li a {
+  font-size: 1.05rem;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+  color: inherit;
+}
+
+ul.posts li a:hover {
+  border-bottom-color: #888;
+}
+
+/* Dates: smaller, muted, sans-serif */
+ul.posts li span.date,
+ul.posts li .post-date {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.3px;
+}
+
+/* ── Article / post body ─────────────────────────── */
+article p, .post-content p {
+  margin-bottom: 1.35rem;
+}
+
+/* ── Links ───────────────────────────────────────── */
+a { color: #2a6496; }
+a:hover { color: #111; }
+
+/* ── Footer ──────────────────────────────────────── */
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  color: #aaa;
+  text-align: center;
+}
+
+/* ── Dark mode ───────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: #111;
-    color: #eaeaea;
-  }
+  body { background: #111; color: #e8e8e8; }
+  section { background: #111; }
+  a { color: #8ab4ff; }
+  a:hover { color: #fff; }
 
-  section {
-    background: #111;
-  }
+  header { border-bottom-color: #2a2a2a; }
+  header nav a { color: #999; }
+  header nav a:hover { color: #eee; border-bottom-color: #555; }
 
-  a {
-    color: #8ab4ff;
-  }
+  ul.posts li { border-bottom-color: #222; }
+  ul.posts li a { border-bottom-color: #333; color: #e8e8e8; }
+  ul.posts li a:hover { border-bottom-color: #888; }
+  ul.posts li span.date, ul.posts li .post-date { color: #666; }
+
+  footer { border-top-color: #222; color: #555; }
 }
