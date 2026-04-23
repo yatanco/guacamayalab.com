@@ -5,7 +5,7 @@ date: 2026-04-18
 lang: en
 ---
 
-“I’d rather pick up the pee and poo than take them out.” What?
+“I’d rather pick up the pee and poo in the apartment than take the dogs out.” What?
 
 With two teenage daughters and a lot to do in a household, there is natural friction.
 
