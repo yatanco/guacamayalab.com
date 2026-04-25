@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartagena Eventos — Qué hacer esta semana</title>
+<meta name="description" content="Todos los planes culturales, talleres, cine y eventos de Cartagena de Indias, en un solo lugar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5F0E8;
+    --ink: #1A1614;
+    --coral: #D4503A;
+    --gold: #C8943A;
+    --teal: #2A6B6E;
+    --mist: #E8E2D8;
+    --soft: #7A7268;
+    --white: #FDFAF5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 60px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .city-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    max-width: 400px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── SEARCH + FILTERS ── */
+  .controls {
+    margin-bottom: 2rem;
+  }
+
+  .search-wrap {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--soft);
+    pointer-events: none;
+  }
+
+  input[type="search"] {
+    width: 100%;
+    padding: 12px 14px 12px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background: var(--white);
+    border: 1px solid var(--mist);
+    border-radius: 10px;
+    color: var(--ink);
+    outline: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="search"]:focus {
+    border-color: var(--teal);
+  }
+
+  input[type="search"]::placeholder { color: var(--soft); }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--mist);
+    background: var(--white);
+    color: var(--soft);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .pill:hover { border-color: var(--ink); color: var(--ink); }
+
+  .pill.active {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+
+  /* ── COUNT ── */
+  .count-line {
+    font-size: 12px;
+    color: var(--soft);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── DAY GROUP ── */
+  .day-group { margin-bottom: 2.5rem; }
+
+  .day-label {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--mist);
+  }
+
+  /* ── EVENT CARD ── */
+  .event-card {
+    background: var(--white);
+    border: 1px solid var(--mist);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+
+  .event-card:hover {
+    border-color: rgba(26,22,20,0.25);
+    transform: translateY(-1px);
+  }
+
+  /* Flyer thumbnail */
+  .thumb {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.2;
+    padding: 4px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .thumb:hover::after {
+    content: '↗';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+    font-style: normal;
+  }
+
+  /* Time */
+  .time-col {
+    flex-shrink: 0;
+    min-width: 58px;
+    text-align: right;
+    padding-top: 2px;
+  }
+
+  .time-main {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .time-end {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 2px;
+  }
+
+  .vline {
+    width: 1px;
+    background: var(--mist);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  /* Body */
+  .event-body { flex: 1; min-width: 0; }
+
+  .event-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .event-venue {
+    font-size: 12px;
+    color: var(--soft);
+    margin-bottom: 6px;
+  }
+
+  .event-desc {
+    font-size: 12px;
+    color: var(--soft);
+    margin-bottom: 7px;
+    line-height: 1.5;
+  }
+
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 999px;
+  }
+
+  .tag-cultura  { background: #EDE8FF; color: #4A35A0; }
+  .tag-familia  { background: #E0F4EE; color: #1A6B50; }
+  .tag-cine     { background: #E3EEFF; color: #1A3F8F; }
+  .tag-taller   { background: #FEF0DC; color: #7A4E10; }
+  .tag-teatro   { background: #FCE8F0; color: #80244A; }
+  .tag-lectura  { background: #E8F5DC; color: #3A6010; }
+  .tag-historia { background: #FAEAE3; color: #7A3018; }
+  .tag-gratis   { background: #D6F0E8; color: #0F5F3E; }
+  .tag-pago     { background: #FDEAEA; color: #801818; }
+
+  .contact {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 5px;
+  }
+
+  /* ── MODAL ── */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,22,20,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .modal-backdrop.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    overflow: hidden;
+    animation: modalIn 0.2s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-flyer {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .modal-flyer-placeholder {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.3;
+  }
+
+  .modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .modal-meta {
+    font-size: 13px;
+    color: var(--soft);
+    margin-bottom: 4px;
+  }
+
+  .modal-tags { margin: 10px 0; }
+
+  .modal-contact {
+    font-size: 12px;
+    color: var(--soft);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--mist);
+  }
+
+  .cal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .cal-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--mist);
+    background: var(--white);
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .cal-btn:hover { background: var(--sand); border-color: rgba(26,22,20,0.2); }
+
+  .cal-btn svg { flex-shrink: 0; }
+
+  .modal-close {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .modal-close:hover { opacity: 0.8; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--soft);
+    border-top: 1px solid var(--mist);
+  }
+
+  footer a { color: var(--teal); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── SUBMIT BANNER ── */
+  .submit-bar {
+    background: var(--teal);
+    color: var(--white);
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 13px;
+  }
+
+  .submit-bar a {
+    color: var(--white);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── EMPTY ── */
+  .empty {
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--soft);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 520px) {
+    header { padding: 2rem 1.25rem 2rem; }
+    .time-col { min-width: 48px; }
+    .thumb { width: 48px; height: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="submit-bar">
+  ¿Tienes un evento? <a href="mailto:me@yatan.co?subject=Evento Cartagena">Escríbenos</a> y lo publicamos.
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="city-label">Cartagena de Indias</div>
+    <h1>Qué hacer<br><em>esta semana</em></h1>
+    <p class="header-sub">Cultura, talleres, cine, música y planes para toda la ciudad — sin algoritmos, sin spam.</p>
+  </div>
+</header>
+
+<main>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="search" id="search" placeholder="Buscar eventos, lugares, actividades..." oninput="render()">
+    </div>
+    <div class="filters" id="filters">
+      <span class="pill active" onclick="setF('all',this)">Todos</span>
+      <span class="pill" onclick="setF('gratis',this)">Gratis</span>
+      <span class="pill" onclick="setF('familia',this)">Familia</span>
+      <span class="pill" onclick="setF('cultura',this)">Cultura</span>
+      <span class="pill" onclick="setF('cine',this)">Cine</span>
+      <span class="pill" onclick="setF('taller',this)">Talleres</span>
+      <span class="pill" onclick="setF('lectura',this)">Lectura</span>
+      <span class="pill" onclick="setF('historia',this)">Historia</span>
+    </div>
+  </div>
+
+  <div class="count-line" id="count-line"></div>
+  <div id="list"></div>
+</main>
+
+<footer>
+  Hecho en Cartagena · <a href="https://yatan.co">yatan.co</a>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <div id="modal-hero"></div>
+    <div class="modal-body">
+      <div class="modal-title" id="m-title"></div>
+      <div class="modal-meta" id="m-time"></div>
+      <div class="modal-meta" id="m-venue"></div>
+      <div class="modal-tags tags" id="m-tags"></div>
+      <div class="modal-meta" id="m-desc"></div>
+      <div class="modal-contact" id="m-contact" style="display:none"></div>
+      <div class="cal-buttons" id="m-cal-buttons"></div>
+      <button class="modal-close" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────
+// To add events: copy one object, fill in the fields.
+// flyer: path to image file, e.g. "flyers/mi-evento.jpg"
+//        or null for a color placeholder
+const EVENTS = [
+  {
+    id: 1,
+    date: "2026-04-25",
+    t0: "08:00", t1: "14:00",
+    title: "Taller de Constelaciones Familiares",
+    desc: "Sanando las Raíces del Árbol Familiar. Hay historias y patrones que se repiten en silencio generación tras generación.",
+    venue: "Por confirmar, Cartagena",
+    tags: ["taller"],
+    price: "pago",
+    contact: "+57 311 40 40065",
+    flyer: null,
+    color: "#7C3AED"
+  },
+  {
+    id: 2,
+    date: "2026-04-25",
+    t0: "16:30", t1: "21:00",
+    title: "Día de la Niñez — Plaza de Variedades",
+    desc: "Música, teatro, inflables, show de títeres por Tropa de Trapo, show de baile por Voces y Tambores, y DJ Compund a las 6:30pm.",
+    venue: "Plaza de Variedades",
+    tags: ["familia", "cultura"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#DB2777"
+  },
+  {
+    id: 3,
+    date: "2026-04-16",
+    t0: "18:00", t1: null,
+    title: "Mi Amigo el Pingüino — FICCI 65",
+    desc: "Proyección especial en el marco del Festival Internacional de Cine de Cartagena. Casa Brasil, país invitado de honor.",
+    venue: "Plaza Variedades",
+    tags: ["cine", "cultura"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#1D4ED8"
+  },
+  {
+    id: 4,
+    date: "2026-04-16",
+    t0: "20:00", t1: null,
+    title: "105 Ciudad Heroica",
+    desc: "Un espectáculo de clase mundial que te transportará por la historia de Cartagena con toda su magia.",
+    venue: "Restaurante La Hacienda, Zona Norte",
+    tags: ["cultura", "historia"],
+    price: "pago",
+    contact: "www.105ciudadheroica.com",
+    flyer: null,
+    color: "#B45309"
+  },
+  {
+    id: 5,
+    date: "2026-04-16",
+    t0: "18:00", t1: null,
+    title: "Georgina — avances de película",
+    desc: "Presentación de avances de la película de Sebastián Ospina, rodada en Cartagena y la isla de Tierrabomba. Con elenco 100% cartagenero.",
+    venue: "Café de la Mañana, Calle Estanco del Aguardiente #05-80",
+    tags: ["cine", "cultura"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#065F46"
+  },
+  {
+    id: 6,
+    date: "2026-04-16",
+    t0: "20:00", t1: null,
+    title: "Corozo Time",
+    desc: "Una agenda llena de invitados especiales que nos regalarán charlas interesantes. Todos cordialmente invitados.",
+    venue: "Por confirmar",
+    tags: ["cultura"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#4338CA"
+  },
+  {
+    id: 7,
+    date: "2026-04-26",
+    t0: "08:00", t1: "17:00",
+    title: "Juega y Descubre en San Felipe de Barajas",
+    desc: "Entrada gratis para colombianos. Presentaciones artísticas infantiles, juegos e inflables en el castillo más emblemático de la ciudad.",
+    venue: "Castillo San Felipe de Barajas",
+    tags: ["familia", "historia"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#B91C1C"
+  },
+  {
+    id: 8,
+    date: "2026-04-26",
+    t0: "10:00", t1: "16:00",
+    title: "Domingo Gratis: El MUHCA Celebra la Niñez",
+    desc: "10am — «Me veo en el Museo» por Amigos Imaginarios. 2pm — «Los Colores de mi Ciudad». Entrada libre todo el día.",
+    venue: "Museo Histórico de Cartagena de Indias (MUHCA)",
+    tags: ["familia", "cultura", "historia"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#D97706"
+  },
+  {
+    id: 9,
+    date: "2026-04-25",
+    t0: "16:30", t1: null,
+    title: "Conversatodxs: Leer en Comunidad",
+    desc: "El Club de Literatura y Artes Raúl Gómez Jattin invita a un encuentro con clubes de lectura locales de la ciudad.",
+    venue: "Claustro de la Merced",
+    tags: ["lectura", "cultura"],
+    price: "gratis",
+    contact: null,
+    flyer: null,
+    color: "#4D7C0F"
+  },
+  {
+    id: 10,
+    date: "2026-04-25",
+    t0: "10:00", t1: "12:00",
+    title: "Taller de Semillas y Alimentos Medicinales",
+    desc: "De la huerta a la mesa: cacao, achiote y culantro como medicina ancestral. Con Erick Torres, biólogo y botánico. Inscripción requerida.",
+    venue: "Museo del Oro Zenú, Cra 4 Plaza de Bolívar #33-26",
+    tags: ["taller", "cultura"],
+    price: "gratis",
+    contact: "museodelorozenu@banrep.gov.co · banrepcultural.org/actividades",
+    flyer: null,
+    color: "#C2410C"
+  }
+];
+
+const DAY_NAMES = {
+  "2026-04-16": "Jueves 16 de abril",
+  "2026-04-25": "Sábado 25 de abril",
+  "2026-04-26": "Domingo 26 de abril"
+};
+
+let activeFilter = "all";
+
+function setF(f, el) {
+  activeFilter = f;
+  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  el.classList.add("active");
+  render();
+}
+
+function tagHTML(tags, price) {
+  return tags.map(t => `<span class="tag tag-${t}">${t}</span>`).join("") +
+    `<span class="tag tag-${price}">${price}</span>`;
+}
+
+function thumbHTML(ev) {
+  if (ev.flyer) {
+    return `<div class="thumb" onclick="openModal(${ev.id})" title="Ver flyer">
+      <img src="${ev.flyer}" alt="Flyer ${ev.title}" loading="lazy">
+    </div>`;
+  }
+  const initials = ev.title.split(" ").slice(0,2).map(w=>w[0]).join("").toUpperCase();
+  return `<div class="thumb" onclick="openModal(${ev.id})" title="Ver detalles" style="background:${ev.color}">
+    <div class="thumb-placeholder">${initials}</div>
+  </div>`;
+}
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  const filtered = EVENTS.filter(e => {
+    const mf = activeFilter === "all" || e.tags.includes(activeFilter) || e.price === activeFilter;
+    const ms = !q ||
+      e.title.toLowerCase().includes(q) ||
+      e.venue.toLowerCase().includes(q) ||
+      (e.desc||"").toLowerCase().includes(q);
+    return mf && ms;
+  });
+
+  document.getElementById("count-line").textContent =
+    filtered.length === 0 ? "Sin resultados" :
+    filtered.length === 1 ? "1 evento" :
+    `${filtered.length} eventos`;
+
+  if (filtered.length === 0) {
+    document.getElementById("list").innerHTML = `<div class="empty">No encontramos nada… por ahora.</div>`;
+    return;
+  }
+
+  const groups = {};
+  filtered.forEach(e => { (groups[e.date] = groups[e.date] || []).push(e); });
+
+  const html = Object.keys(groups).sort().map(date => {
+    const cards = groups[date]
+      .sort((a, b) => a.t0.localeCompare(b.t0))
+      .map(e => `
+        <div class="event-card">
+          ${thumbHTML(e)}
+          <div class="time-col">
+            <div class="time-main">${e.t0}</div>
+            ${e.t1 ? `<div class="time-end">→ ${e.t1}</div>` : ""}
+          </div>
+          <div class="vline"></div>
+          <div class="event-body">
+            <div class="event-title">${e.title}</div>
+            <div class="event-venue">${e.venue}</div>
+            <div class="tags">${tagHTML(e.tags, e.price)}</div>
+            ${e.contact ? `<div class="contact">${e.contact}</div>` : ""}
+          </div>
+        </div>
+      `).join("");
+
+    const label = DAY_NAMES[date] || date;
+    return `<div class="day-group">
+      <div class="day-label">${label}</div>
+      ${cards}
+    </div>`;
+  }).join("");
+
+  document.getElementById("list").innerHTML = html;
+}
+
+// ── CALENDAR HELPERS ──────────────────────────────────────
+function toCalDT(date, time, offsetHours) {
+  // date: "2026-04-25", time: "08:00", offsetHours: 1 (to add end time if missing)
+  const [y, m, d] = date.split("-");
+  const [h, min] = time.split(":");
+  const dt = new Date(Date.UTC(+y, +m - 1, +d, +h + offsetHours, +min));
+  return dt.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
+function googleCalURL(e) {
+  const start = toCalDT(e.date, e.t0, -5); // Cartagena is UTC-5
+  const end   = e.t1 ? toCalDT(e.date, e.t1, -5) : toCalDT(e.date, e.t0, -5 + 1);
+  const p = new URLSearchParams({
+    action: "TEMPLATE",
+    text: e.title,
+    dates: `${start}/${end}`,
+    details: (e.desc || "") + (e.contact ? `\n\nContacto: ${e.contact}` : ""),
+    location: e.venue,
+  });
+  return `https://calendar.google.com/calendar/render?${p}`;
+}
+
+function outlookCalURL(e) {
+  const start = `${e.date}T${e.t0}:00`;
+  const endTime = e.t1 || (String(+e.t0.split(":")[0] + 1).padStart(2,"0") + ":" + e.t0.split(":")[1]);
+  const end = `${e.date}T${endTime}:00`;
+  const p = new URLSearchParams({
+    path: "/calendar/action/compose",
+    rru: "addevent",
+    subject: e.title,
+    startdt: start,
+    enddt: end,
+    body: (e.desc || "") + (e.contact ? `\n\nContacto: ${e.contact}` : ""),
+    location: e.venue,
+  });
+  return `https://outlook.live.com/calendar/0/deeplink/compose?${p}`;
+}
+
+// ── MODAL ──────────────────────────────────────────────────
+function openModal(id) {
+  const e = EVENTS.find(x => x.id === id);
+  if (!e) return;
+
+  const hero = document.getElementById("modal-hero");
+  if (e.flyer) {
+    hero.innerHTML = `<img class="modal-flyer" src="${e.flyer}" alt="Flyer">`;
+  } else {
+    hero.innerHTML = `<div class="modal-flyer-placeholder" style="background:${e.color}">${e.title}</div>`;
+  }
+
+  document.getElementById("m-title").textContent = e.title;
+  document.getElementById("m-time").textContent =
+    e.t0 + (e.t1 ? ` – ${e.t1}` : "") + " · " + (DAY_NAMES[e.date] || e.date);
+  document.getElementById("m-venue").textContent = e.venue;
+  document.getElementById("m-tags").innerHTML = tagHTML(e.tags, e.price);
+  document.getElementById("m-desc").textContent = e.desc || "";
+
+  const contactEl = document.getElementById("m-contact");
+  if (e.contact) {
+    contactEl.textContent = e.contact;
+    contactEl.style.display = "block";
+  } else {
+    contactEl.style.display = "none";
+  }
+
+  // Calendar buttons
+  document.getElementById("m-cal-buttons").innerHTML = `
+    <a class="cal-btn" href="${googleCalURL(e)}" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Google Calendar
+    </a>
+    <a class="cal-btn" href="${outlookCalURL(e)}" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Outlook
+    </a>
+  `;
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(evt) {
+  if (evt && evt.target !== document.getElementById("modal")) return;
+  document.getElementById("modal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+render();
+</script>
+</body>
+</html>
