@@ -12,14 +12,13 @@ Many people say they want to write a blog — to share ideas, build consistency,
 And like many people, I spent *a long time doing everything except writing*.
 
 ## 1) Tried Every Editor and Format
-
 - Word
 - Google Docs
 - LaTeX
 - MacDown
 - VS Code
 - UpNote
-- Scribl
+- Scrivener
 - Wordpress
 - Ghost
 
