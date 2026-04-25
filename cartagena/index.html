@@ -31,6 +31,19 @@
     min-height: 100vh;
   }
 
+  /* ── NAV ── */
+  .site-nav {
+    background: var(--ink);
+    padding: 0.75rem 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .site-nav a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.04em; transition: color 0.15s; }
+  .site-nav a:hover { color: var(--white); }
+  .site-nav a.active { color: var(--gold); }
+  .site-nav .brand { color: var(--white); font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 15px; margin-right: auto; }
+
   /* ── HEADER ── */
   header {
     background: var(--ink);
@@ -454,6 +467,149 @@
 
   .modal-close:hover { opacity: 0.8; }
 
+  /* ── NAV TABS ── */
+  .page-nav {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--mist);
+    background: var(--sand);
+  }
+
+  .nav-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.9rem 1.25rem;
+    cursor: pointer;
+    color: var(--soft);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .nav-tab:hover { color: var(--ink); }
+  .nav-tab.active { color: var(--ink); border-bottom-color: var(--coral); }
+
+  .page-section { display: none; }
+  .page-section.active { display: block; }
+
+  /* ── PLACES ── */
+  .places-intro {
+    font-size: 14px;
+    color: var(--soft);
+    margin-bottom: 2rem;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .places-category {
+    margin-bottom: 2.5rem;
+  }
+
+  .places-category-label {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--mist);
+  }
+
+  .place-card {
+    background: var(--white);
+    border: 1px solid var(--mist);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 10px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+
+  .place-card:hover {
+    border-color: rgba(26,22,20,0.25);
+    transform: translateY(-1px);
+  }
+
+  .place-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .place-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .place-badges {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .badge-wifi    { background: #E3EEFF; color: #1A3F8F; }
+  .badge-ac      { background: #E0F4EE; color: #1A6B50; }
+  .badge-outlets { background: #FEF0DC; color: #7A4E10; }
+  .badge-quiet   { background: #EDE8FF; color: #4A35A0; }
+  .badge-food    { background: #FAEAE3; color: #7A3018; }
+  .badge-cowork  { background: #D6F0E8; color: #0F5F3E; }
+  .badge-closed  { background: #FDEAEA; color: #801818; }
+
+  .place-neighborhood {
+    font-size: 11px;
+    color: var(--soft);
+    margin-bottom: 6px;
+  }
+
+  .place-desc {
+    font-size: 13px;
+    color: var(--soft);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+
+  .place-tip {
+    font-size: 12px;
+    color: var(--teal);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .place-hours {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 5px;
+  }
+
+  .source-note {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--mist);
+    line-height: 1.7;
+  }
+
+  .source-note a { color: var(--teal); text-decoration: none; }
+  .source-note a:hover { text-decoration: underline; }
+
   /* ── FOOTER ── */
   footer {
     text-align: center;
@@ -497,10 +653,17 @@
     header { padding: 2rem 1.25rem 2rem; }
     .time-col { min-width: 48px; }
     .thumb { width: 48px; height: 48px; }
+    .nav-tab { padding: 0.8rem 0.9rem; font-size: 12px; }
   }
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">Cartagena</a>
+  <a href="index.html" class="active">Eventos</a>
+  <a href="remote.html">Trabajar aquí</a>
+</nav>
 
 <div class="submit-bar">
   ¿Tienes un evento? <a href="mailto:me@yatan.co?subject=Evento Cartagena">Escríbenos</a> y lo publicamos.
@@ -514,7 +677,15 @@
   </div>
 </header>
 
+<nav class="page-nav">
+  <div class="nav-tab active" onclick="switchTab('events', this)">Eventos</div>
+  <div class="nav-tab" onclick="switchTab('places', this)">Dónde trabajar</div>
+</nav>
+
 <main>
+
+<!-- EVENTS SECTION -->
+<div class="page-section active" id="section-events">
   <div class="controls">
     <div class="search-wrap">
       <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -537,6 +708,158 @@
 
   <div class="count-line" id="count-line"></div>
   <div id="list"></div>
+</div>
+
+<!-- PLACES SECTION -->
+<div class="page-section" id="section-places">
+  <p class="places-intro">Los mejores sitios para trabajar en remoto, tomar un café, o simplemente sentarse con el portátil sin que te miren raro. Curado a mano, actualizado cuando algo cambia.</p>
+
+  <div class="places-category">
+    <div class="places-category-label">Cafés para trabajar</div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Café San Alberto</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi rápido</span>
+          <span class="badge badge-ac">AC</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Centro Histórico · Plaza Santo Domingo</div>
+      <div class="place-desc">El mejor café de especialidad de la ciudad — premiado, caro, y vale cada peso. Métodos de preparación como chemex, sifón y pour-over. El wifi es sorprendentemente bueno para ser un lugar tan turístico.</div>
+      <div class="place-tip">→ Llega temprano o busca el mezzanine: más tranquilo y con mejores mesas para trabajar. El espacio es limitado.</div>
+      <div class="place-hours">Lun–Dom 9:00 – 19:30</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Ábaco Libros y Café</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi ok</span>
+          <span class="badge badge-quiet">tranquilo</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Centro Histórico · Calles de la Iglesia y Mantilla</div>
+      <div class="place-desc">Una librería enorme con bar y mesas para trabajar. Ambiente bohemio, personal amable que no te apura, y puedes pedir café, vino o jugos. El wifi es suficiente para trabajo básico aunque no el más potente.</div>
+      <div class="place-tip">→ Ideal para trabajo de concentración o reuniones pequeñas. Pocos enchufes visibles — llega con la batería cargada.</div>
+      <div class="place-hours">Lun–Sáb 9:00 – 21:00 · Dom 8:00 – 20:00</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Beiyu Slow Food & Coffee</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi ok</span>
+          <span class="badge badge-outlets">enchufes</span>
+          <span class="badge badge-food">comida</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Getsemaní</div>
+      <div class="place-desc">El mejor spot de Getsemaní para trabajar. Área de café con enchufes, patio interior más reservado, y comida saludable real — no las arepas de gasolinera. El wifi puede flaquear si está lleno.</div>
+      <div class="place-tip">→ Sin AC. En las horas pico de calor (12–3pm) es duro. Mejor mañanas o después de las 5pm. El patio es la joya.</div>
+      <div class="place-hours">Lun–Sáb 8:00 – 22:30 · Dom 9:00 – 18:00</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Fruto Bendito Café</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi rápido</span>
+          <span class="badge badge-outlets">enchufes</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Centro Histórico · Claustro de La Merced, Cra. 4 #CL 38-40</div>
+      <div class="place-desc">Espacio laptop-friendly con wifi rápido, varios enchufes y ambiente interior/exterior relajado en un claustro colonial. Uno de los spots más consistentes para trabajo en el centro.</div>
+      <div class="place-tip">→ El claustro da sombra natural — más fresco que muchas opciones del centro sin necesitar AC a tope.</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Libertario Coffee Roasters</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi</span>
+          <span class="badge badge-ac">AC</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Getsemaní</div>
+      <div class="place-desc">Tostadora de especialidad con baristas que saben lo que hacen — Gabriel y Manuel son conocidos por su precisión. Ambiente vibrante, buena comida, y una energía que combina trabajo y socialización.</div>
+      <div class="place-tip">→ Excelente opción si quieres calidad de café sin pagar los precios del centro histórico.</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Café Stepping Stone</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi</span>
+          <span class="badge badge-quiet">tranquilo</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Getsemaní · Cra. 9 #25-56</div>
+      <div class="place-desc">Café de empresa social que entrena a locales en hostelería. Café fuerte, patio trasero tranquilo y una misión que vale la pena apoyar con tu consumo.</div>
+      <div class="place-tip">→ El patio trasero es uno de los mejores rincones de Getsemaní para concentrarse.</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Juan Valdez</div>
+        <div class="place-badges">
+          <span class="badge badge-wifi">wifi</span>
+          <span class="badge badge-ac">AC</span>
+          <span class="badge badge-outlets">enchufes</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Varias ubicaciones · Bocagrande, Getsemaní, Ciudad Amurallada</div>
+      <div class="place-desc">El Starbucks colombiano — predecible, con AC garantizado, mesas grandes y enchufes. No el café más interesante, pero confiable cuando necesitas productividad sin drama.</div>
+      <div class="place-tip">→ La ubicación de Bocagrande tiene más espacio. Buena opción para videollamadas largas.</div>
+    </div>
+
+    <div class="place-card" style="opacity: 0.6;">
+      <div class="place-header">
+        <div class="place-name">Folklore Colombian Café</div>
+        <div class="place-badges">
+          <span class="badge badge-closed">cerrado permanentemente</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Centro Histórico</div>
+      <div class="place-desc">Era el favorito indiscutible — 40 Mbps, mucho espacio, cerca de enchufes, abre temprano. Desafortunadamente cerró de forma permanente en 2021. Lo dejamos aquí para que no pierdas el viaje.</div>
+    </div>
+  </div>
+
+  <div class="places-category">
+    <div class="places-category-label">Espacios de coworking</div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">Cowork Cartagena</div>
+        <div class="place-badges">
+          <span class="badge badge-cowork">coworking</span>
+          <span class="badge badge-wifi">fibra óptica</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">La Matuna / Centro Histórico · Calle 32 #8-21, Edif. Banco Popular</div>
+      <div class="place-desc">Justo fuera de la ciudad amurallada. Espacio moderno con terraza en el techo con vista al puerto, café, impresión (incluida 3D), y lo más importante: cerveza gratis jueves y viernes de 2 a 6pm.</div>
+      <div class="place-tip">→ Pases diarios disponibles. El rooftop es un punto de venta real — pocas ciudades tienen esto.</div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-header">
+        <div class="place-name">TuWork</div>
+        <div class="place-badges">
+          <span class="badge badge-cowork">coworking</span>
+          <span class="badge badge-ac">AC</span>
+        </div>
+      </div>
+      <div class="place-neighborhood">Bocagrande · Cl. 6A #3-32</div>
+      <div class="place-desc">Espacio profesional con internet de fibra óptica, oficinas privadas, salas de reuniones, duchas, casilleros y terraza exterior iluminada. La opción más "corporativa" de la ciudad — buena para reuniones formales.</div>
+      <div class="place-tip">→ Mejor si necesitas privacidad para llamadas o un ambiente más serio que un café.</div>
+    </div>
+  </div>
+
+  <div class="source-note">
+    Información recopilada de <a href="https://www.lostwithpurpose.com/wifi-cartagena/" target="_blank" rel="noopener">Lost With Purpose</a> y búsquedas actualizadas a 2025. Algunos lugares cambian horarios y calidad de wifi — si algo está desactualizado, <a href="mailto:me@yatan.co">escríbenos</a>.
+  </div>
+</div>
+
 </main>
 
 <footer>
@@ -782,6 +1105,14 @@ function render() {
   }).join("");
 
   document.getElementById("list").innerHTML = html;
+}
+
+// ── TABS ──────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll(".page-section").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll(".nav-tab").forEach(t => t.classList.remove("active"));
+  document.getElementById("section-" + name).classList.add("active");
+  el.classList.add("active");
 }
 
 // ── CALENDAR HELPERS ──────────────────────────────────────
