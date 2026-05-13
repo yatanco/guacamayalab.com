@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes');
+const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
+---
+
+<Layout title="Notes">
+  <p class="page-heading">All notes</p>
+
+  <ul class="note-list">
+    {notes.map((note) => (
+      <li>
+        <span class="note-date">{formatDate(note.data.date)}</span>
+        <a href={`/notes/${note.id.replace(/\.mdx?$/, '')}/`}>{note.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>

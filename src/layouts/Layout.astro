@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'An online notebook — unfinished, evolving, honest.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title === 'Guacamaya Lab' ? title : `${title} — Guacamaya Lab`}</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <div class="site-wrap">
+      <header>
+        <h1 class="site-title"><a href="/">Guacamaya Lab</a></h1>
+        <nav>
+          <a href="/notes/">Notes</a>
+          <a href="https://yatan.co" target="_blank" rel="noopener">About</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <p>Guacamaya Lab — unfinished, evolving, honest.</p>
+      </footer>
+    </div>
+  </body>
+</html>

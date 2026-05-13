@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.id.replace(/\.mdx?$/, '') },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
+---
+
+<Layout title={note.data.title}>
+  <a href="/notes/" class="back-link">← Notes</a>
+
+  <div class="note-header">
+    <h1>{note.data.title}</h1>
+    <time datetime={note.data.date.toISOString()}>{formatDate(note.data.date)}</time>
+  </div>
+
+  <div class="note-body">
+    <Content />
+  </div>
+</Layout>

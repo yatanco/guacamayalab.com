@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes');
+const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 10);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+}
+---
+
+<Layout title="Guacamaya Lab">
+  <div class="home-intro">
+    <p>An online notebook — unfinished, evolving, honest.</p>
+  </div>
+
+  <ul class="note-list">
+    {notes.map((note) => (
+      <li>
+        <span class="note-date">{formatDate(note.data.date)}</span>
+        <a href={`/notes/${note.id.replace(/\.mdx?$/, '')}/`}>{note.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>
