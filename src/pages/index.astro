@@ -1,26 +1,142 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Shell from '../layouts/Shell.astro';
 
-const allNotes = await getCollection('notes');
-const notes = allNotes.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 10);
+const products = (await getCollection('products', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
-}
+const statusLabel = { live: 'Live', building: 'Building', concept: 'Concept' };
+const statusFeather = { live: 'green', building: 'gold', concept: 'cobalt' };
 ---
 
-<Layout title="Guacamaya Lab">
-  <div class="home-intro">
-    <p>An online notebook — unfinished, evolving, honest.</p>
-  </div>
+<Shell
+  title="Guacamaya Lab"
+  description="Practical software built for problems I run into myself."
+>
+  <section class="intro">
+    <h1>Guacamaya Lab</h1>
+    <p>
+      Practical software, built for problems I run into myself first. Some of
+      it ships as products, some of it stays small on purpose — this is
+      what's currently live.
+    </p>
+  </section>
 
-  <ul class="note-list">
-    {notes.map((note) => (
-      <li>
-        <span class="note-date">{formatDate(note.data.date)}</span>
-        <a href={`/notes/${note.id.replace(/\.mdx?$/, '')}/`}>{note.data.title}</a>
-      </li>
-    ))}
-  </ul>
-</Layout>
+  <hr class="wingstripe" />
+
+  <section>
+    <p class="eyebrow">Building</p>
+    <ul class="product-list">
+      {
+        products.map((product) => (
+          <li>
+            <a href={`/${product.slug}`}>
+              <span class={`dot feather-${statusFeather[product.data.status]}`} />
+              {product.data.title}
+            </a>
+            <span class="status">{statusLabel[product.data.status]}</span>
+            <p class="dim">{product.data.tagline}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <hr />
+
+  <section>
+    <p class="eyebrow">Elsewhere</p>
+    <p class="dim">
+      More on how I think about running a portfolio of ventures at
+      <a href="https://yatan.co/writing">yatan.co/writing</a>.
+    </p>
+  </section>
+</Shell>
+
+<style>
+  .intro h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 2.1rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+
+  .intro p {
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 1.25rem;
+  }
+
+  .product-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-list li {
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .product-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+  }
+
+  .product-list a:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .product-list a:hover .dot {
+    filter: brightness(1.15);
+  }
+
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.feather-green {
+    background: var(--feather-green);
+  }
+
+  .dot.feather-gold {
+    background: var(--feather-gold);
+  }
+
+  .dot.feather-cobalt {
+    background: var(--feather-cobalt);
+  }
+
+  .status {
+    margin-left: 0.6rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .dim {
+    color: var(--text-dim);
+    margin: 0.35rem 0 0;
+  }
+</style>

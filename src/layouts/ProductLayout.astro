@@ -1,0 +1,105 @@
+---
+import Shell from './Shell.astro';
+
+export interface Props {
+  title: string;
+  tagline: string;
+  status: 'live' | 'building' | 'concept';
+  url?: string;
+}
+const { title, tagline, status, url } = Astro.props;
+
+const statusLabel = { live: 'Live', building: 'Building', concept: 'Concept' }[status];
+const statusFeather = { live: 'green', building: 'gold', concept: 'cobalt' }[status];
+---
+
+<Shell title={`${title} · Guacamaya Lab`} description={tagline}>
+  <article class="product">
+    <p class="eyebrow">
+      <span class={`dot feather-${statusFeather}`} />
+      {statusLabel}
+    </p>
+    <h1>{title}</h1>
+    <p class="tagline">{tagline}</p>
+    <hr />
+    <div class="read">
+      <slot />
+    </div>
+    {
+      url && (
+        <p class="back">
+          <a href="/">← All projects</a>
+        </p>
+      )
+    }
+  </article>
+</Shell>
+
+<style>
+  .product .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 0.9rem;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot.feather-green {
+    background: var(--feather-green);
+  }
+
+  .dot.feather-gold {
+    background: var(--feather-gold);
+  }
+
+  .dot.feather-cobalt {
+    background: var(--feather-cobalt);
+  }
+
+  .product h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.6rem;
+  }
+
+  .product .tagline {
+    color: var(--text-dim);
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+  }
+
+  .read {
+    font-family: var(--serif);
+    color: var(--read-text);
+    line-height: var(--read-line-height);
+    font-size: 1.05rem;
+  }
+
+  .read :global(a) {
+    color: var(--read-accent);
+  }
+
+  .read :global(p) {
+    margin: 0 0 1.4rem;
+  }
+
+  .back {
+    margin-top: 3rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+  }
+</style>
