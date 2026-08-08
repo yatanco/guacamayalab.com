@@ -19,4 +19,4 @@ The log has already done its job once — surfacing a pattern of avoiding a
 task despite having the time for it, which is exactly the kind of thing a
 to-do list won't show you but a log will.
 
-[Open Intentions →](https://intentions.guacamayalab.com)
+Currently private while I build out a public version.
